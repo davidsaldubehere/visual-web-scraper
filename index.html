@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Visual Web Scraper</title>
+</head>
+<body>
+    <div class="container">
+        <div class="outline" id = 'outline'>
+            <h1>Outline</h1>
+        </div>
+        <div class="editor">
+            <div class="field" id = 'urlField' style="display: block;">
+                <h1>Choose a URL</h1>
+                <input id = 'urlInput' type="url" spellcheck="false" placeholder="Ex: www.google.com">
+                <button onclick= "parseURL()" type="submit">Next</button>
+                <p>Once you hit the next button you will add the targets you wish to scrape.</p>
+            </div>
+            <div class="field" id='tagField' >
+                <h1>Pick The Targets</h1>
+                <p>Choose a tag</p>
+                <p>Only choose one option.. so only choose a tag class or id</p>
+                <input type="text" id='tagName' placeholder="Ex: title">
+                <p>or choose an id or class...</p>
+                <input type="text" id='className' placeholder='class'>
+                <input type="number" id='classIndex' style="width: 25%;" placeholder="index of item with class">
+                <p>A class and id is not required</p>
+                <input type="text" id="idName" placeholder="id">
+                <button onclick= "parseTags()" type="submit">Next</button>
+                <p>Once you hit the next button you will add the attributes of the element you wish to scrape.</p>
+            </div>
+            <div class="field" id='attrField'>
+                <h1>
+                    Choose the Attributes or Content to Scrape
+                </h1>
+                <input type="text" id='attributes' placeholder='Ex: src'>
+                <p>then select </p>
+            </div>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
