@@ -4,7 +4,8 @@ var targets = {
     className: '',
     tagName: '',
 };
-var classIndex;
+var classIndex = [];
+var attributes = [];
 var currentField = 0;
 function addElement(value, id){
     document.getElementById('outline').innerHTML += `<button id = '${id}'>${value}</button>`
@@ -23,10 +24,28 @@ function parseURL(){
 function parseTags(){
     let ids = ['tagName', 'className', 'classIndex', 'idName'];
     for(i of ids){
-        if(document.getElementById(i).value!=''){
-            targets.push(`${i}: ${document.getElementById(i).value}`)
+        if (i !=''){
+            if(i == 'classIndex'){
+                classIndex.push(document.getElementById(i).value)
+            }else if(document.getElementById(i).value!=''){
+                targets[i] = (targets[i] + `${document.getElementById(i).value} `)
+            }
         }
+
     }
     addElement('Targets', 'navTargets');
     switchField();
+}
+function parseAttributes(){
+    let attr = document.getElementById('attributes').value;
+    if(attr != ''){
+        attributes.push(attr);
+    }else{
+        attributes.push('innerHTML');
+    }
+    addElement('Attributes', 'navAttributes');
+    switchField
+}
+function screenSelector(id){
+    let screens = ['']
 }
