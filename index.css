@@ -47,6 +47,7 @@ button:hover{
     border: 2px solid rgb(209, 209, 209);
     border-radius: 10px;
     text-align: center;
+    margin: 10px;
 }
 .editor{
     position: relative;
@@ -57,6 +58,8 @@ button:hover{
     border-radius: 10px;
     text-align: center;
     padding: 50px;
+    margin: 10px;
+
 }
 .field{
     display: none;
