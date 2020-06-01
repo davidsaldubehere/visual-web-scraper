@@ -25,7 +25,6 @@
                 <input type="text" id='tagName' placeholder="Ex: title">
                 <p>or choose an id or class...</p>
                 <input type="text" id='className' placeholder='class'>
-                <input type="number" id='classIndex' style="width: 25%;" placeholder="index of item with class">
                 <p>A class and id is not required</p>
                 <input type="text" id="idName" placeholder="id">
                 <button onclick= "parseTags()" type="submit">Next</button>
@@ -37,7 +36,7 @@
                 </h1>
                 <input type="text" id='attributes' placeholder='Ex: src'>
                 <button onclick="parseAttributes()">Next</button>
-                <p>Or... you can leave this field blank if you only want to get the innerHTML of the element</p>
+                <p>Or... you can leave this field blank if you only want to get the text of the element</p>
                 <p>That would be a good choice if you wanted to get the value of a label or title</p>
             </div>
             <div class="field">
@@ -58,7 +57,7 @@
         <div class="update">
             <h1>Generator</h1>
             <p>Once you are ready click the update code button to produce the python code</p>
-            <button>Update Code</button>
+            <button onclick="generate()">Update Code</button>
         </div>
         <div class="code">
             <h1>Code will appear here</h1>

@@ -4,7 +4,6 @@ var targets = {
     className: '',
     tagName: '',
 };
-var classIndex = [];
 var attributes = [];
 var currentField = 0;
 function addElement(value, id){
@@ -29,12 +28,10 @@ function parseURL(){
     switchField();
 }
 function parseTags(){
-    let ids = ['tagName', 'className', 'classIndex', 'idName'];
+    let ids = ['tagName', 'className', 'idName'];
     for(i of ids){
         if (i !=''){
-            if(i == 'classIndex'){
-                classIndex.push(document.getElementById(i).value)
-            }else if(document.getElementById(i).value!=''){
+            if(document.getElementById(i).value!=''){
                 targets[i] = (targets[i] + `${document.getElementById(i).value} `)
             }
         }
@@ -62,14 +59,56 @@ function screenSelector(id){
     }
     document.getElementById(screens[ids.indexOf(id)]).style.display = 'block';
 }
+
 function generate(){
     let numberOfElements = attributes.length;
+    let variables = [];
     let starterCode = `
     from bs4 import BeautifulSoup as bs
     from requests import get
 
     page = get('${url}').content
     soup = bs(page, 'lxml')
+    def generatedCode():
+
     `;
-    
+    if(targets.tagName != ''){
+        let tags = targets.tagName.split(' ');
+        for(let i =0; i<=tags.length; i++){
+            if(tags[i]!=undefined && tags[i]!=''){
+                starterCode += `\n\t tag${i} = soup.findAll('${tags[i]}')`
+                variables.push(`tag${i}`);
+            }
+        }
+    }
+    if(targets.className != ''){
+        let tags = targets.className.split(' ');
+        for(let i =0; i<=tags.length; i++){
+            if(tags[i]!=undefined && tags[i]!=''){
+                starterCode += `\n\t class${i} = soup.findAll(class_='${tags[i]}')`
+                variables.push(`class${i}`);
+            }
+        }
+    }
+    if(targets.idName != ''){
+        let tags = targets.idName.split(' ');
+        for(let i =0; i<=tags.length; i++){
+            if(tags[i]!=undefined && tags[i]!=''){
+                starterCode += `\n\t id${i} = soup.find(id='${tags[i]}')`
+                variables.push(`id${i}`);
+            }
+        }
+    }
+    for(var i = 0; i<numberOfElements; i++){
+        if(variables[i].includes('id')){
+            if(attributes[i]=='innerHTML'){
+                starterCode += `\n\t ${variables[i]}Attributes = ${variables[i]}.text`
+            }
+        }else{
+            if(attributes[i]=='innerHTML'){
+                starterCode += `\n\t ${variables[i]}AttrList = [i.text for x in ${variables[i]}]`
+            }
+        }
+    }
+    console.log(starterCode);
 }
