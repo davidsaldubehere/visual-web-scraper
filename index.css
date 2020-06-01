@@ -7,7 +7,8 @@ body{
 }
 input{
     border-radius: 5px;
-    outline: black;
+    border: 2px solid black;
+    padding: 5px;
     width: 50%;
 }
 button{
@@ -63,4 +64,18 @@ button:hover{
 }
 .field{
     display: none;
+}
+.generator{
+
+    display: flex;
+    padding: 10px;
+
+}
+.update{
+    margin: 20px;
+}
+.code{
+    margin: 50px;
+    border: 4px solid black;
+    padding: 10px;
 }
