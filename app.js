@@ -107,8 +107,13 @@ function generate(){
         }else{
             if(attributes[i]=='innerHTML'){
                 starterCode += `\n\t ${variables[i]}AttrList = [i.text for x in ${variables[i]}]`
+            }else{
+                starterCode += `\n\t ${variables[i]}Attrlist=[]\n\t for i in ${variables[i]}:\n\t\t${variables[i]}.append(i['${attributes[i]}'])`
             }
+
         }
     }
+    
     console.log(starterCode);
+    document.getElementById('generatedCode').innerHTML=starterCode;
 }
