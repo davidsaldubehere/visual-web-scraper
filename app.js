@@ -69,7 +69,7 @@ function generate(){
         let tags = targets.tagName.split(' ');
         for(let i =0; i<=tags.length; i++){
             if(tags[i]!=undefined && tags[i]!=''){
-                starterCode += `\n\t tag${i} = soup.findAll('${tags[i]}')`
+                starterCode += `\n\ttag${i} = soup.findAll('${tags[i]}')`
                 variables.push(`tag${i}`);
             }
         }
@@ -78,7 +78,7 @@ function generate(){
         let tags = targets.className.split(' ');
         for(let i =0; i<=tags.length; i++){
             if(tags[i]!=undefined && tags[i]!=''){
-                starterCode += `\n\t class${i} = soup.findAll(class_='${tags[i]}')`
+                starterCode += `\n\tclass${i} = soup.findAll(class_='${tags[i]}')`
                 variables.push(`class${i}`);
             }
         }
@@ -87,7 +87,7 @@ function generate(){
         let tags = targets.idName.split(' ');
         for(let i =0; i<=tags.length; i++){
             if(tags[i]!=undefined && tags[i]!=''){
-                starterCode += `\n\t id${i} = soup.find(id='${tags[i]}')`
+                starterCode += `\n\tid${i} = soup.find(id='${tags[i]}')`
                 variables.push(`id${i}`);
             }
         }
@@ -95,13 +95,13 @@ function generate(){
     for(var i = 0; i<numberOfElements; i++){
         if(variables[i].includes('id')){
             if(attributes[i]=='innerHTML'){
-                starterCode += `\n\t ${variables[i]}Attributes = ${variables[i]}.text`
+                starterCode += `\n\t${variables[i]}Attributes = ${variables[i]}.text`
             }
         }else{
             if(attributes[i]=='innerHTML'){
-                starterCode += `\n\t ${variables[i]}AttrList = [x.text for x in ${variables[i]}]`
+                starterCode += `\n\t${variables[i]}AttrList = [x.text for x in ${variables[i]}]`
             }else{
-                starterCode += `\n\t ${variables[i]}Attrlist=[]\n\t for i in ${variables[i]}:\n\t\t${variables[i]}.append(i['${attributes[i]}'])`
+                starterCode += `\n\t${variables[i]}Attrlist=[]\n\t for i in ${variables[i]}:\n\t\t${variables[i]}.append(i['${attributes[i]}'])`
             }
 
         }
