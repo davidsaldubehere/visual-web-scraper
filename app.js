@@ -6,6 +6,7 @@ var targets = {
 };
 var attributes = [];
 var currentField = 0;
+var starterCode;
 function addElement(value, id){
     document.getElementById('outline').innerHTML += `<button id = '${id}' onclick='screenSelector("${id}")'>${value}</button>`
 }
@@ -63,15 +64,7 @@ function screenSelector(id){
 function generate(){
     let numberOfElements = attributes.length;
     let variables = [];
-    let starterCode = `
-    from bs4 import BeautifulSoup as bs
-    from requests import get
-
-    page = get('${url}').content
-    soup = bs(page, 'lxml')
-    def generatedCode():
-
-    `;
+    starterCode = `from bs4 import BeautifulSoup as bs\nfrom requests import get\npage = get('${url}').content\nsoup = bs(page, 'lxml')\ndef generatedCode():`;
     if(targets.tagName != ''){
         let tags = targets.tagName.split(' ');
         for(let i =0; i<=tags.length; i++){
@@ -106,14 +99,22 @@ function generate(){
             }
         }else{
             if(attributes[i]=='innerHTML'){
-                starterCode += `\n\t ${variables[i]}AttrList = [i.text for x in ${variables[i]}]`
+                starterCode += `\n\t ${variables[i]}AttrList = [x.text for x in ${variables[i]}]`
             }else{
                 starterCode += `\n\t ${variables[i]}Attrlist=[]\n\t for i in ${variables[i]}:\n\t\t${variables[i]}.append(i['${attributes[i]}'])`
             }
 
         }
     }
-    
     console.log(starterCode);
     document.getElementById('generatedCode').innerHTML=starterCode;
+}
+function copyCode(){
+    const el = document.createElement('textarea');
+    el.value = starterCode;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    alert('Code Copied')
 }

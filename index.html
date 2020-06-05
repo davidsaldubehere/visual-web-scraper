@@ -15,7 +15,7 @@
             <div class="field" id = 'urlField' style="display: block;">
                 <h1>Choose a URL</h1>
                 <p>Step 1</p>
-                <input id = 'urlInput' type="url" spellcheck="false" placeholder="Ex: www.google.com">
+                <input id = 'urlInput' type="url" spellcheck="false" placeholder="Ex: http://example.com/">
                 <button onclick= "parseURL()" type="submit">Next</button>
                 <p>Once you hit the next button you will add the targets you wish to scrape.</p>
             </div>
@@ -70,6 +70,8 @@
 
             <pre id = 'generatedCode'><h1>Code will appear here</h1>
             </pre>
+
+            <button onclick="copyCode()">Copy Code</button>
         </div>
     </div>
 
