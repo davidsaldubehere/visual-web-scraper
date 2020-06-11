@@ -104,7 +104,7 @@ function generate(){
             if(attributes[i]=='innerHTML'){
                 starterCode += `\n\t${variables[i]}AttrList = [x.text for x in ${variables[i]}]`
             }else{
-                starterCode += `\n\t${variables[i]}Attrlist=[]\n\t for i in ${variables[i]}:\n\t\t${variables[i]}.append(i['${attributes[i]}'])`
+                starterCode += `\n\t${variables[i]}Attrlist=[]\n\tfor i in ${variables[i]}:\n\t\t${variables[i]}Attrlist.append(i['${attributes[i]}'])`
             }
 
         }
