@@ -11,6 +11,9 @@ function addElement(value, id){
     document.getElementById('outline').innerHTML += `<button id = '${id}' onclick='screenSelector("${id}")'>${value}</button>`
 }
 function switchField(){
+    for(x of document.getElementsByTagName('input')){
+        x.value = '';
+    }
     let fields = document.getElementsByClassName('field')
     for(i of fields){
         i.style.display = 'none';
