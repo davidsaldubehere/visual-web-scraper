@@ -7,6 +7,9 @@
     <title>Visual Web Scraper</title>
 </head>
 <body>
+    <div id='wave-bg'>
+    </div>
+
     <div class="container">
         <div class="outline" id = 'outline'>
             <h1>Outline</h1>
@@ -76,5 +79,23 @@
     </div>
 
     <script src="app.js"></script>
+    <script src="three.r119.min.js"></script>
+    <script src="vanta.waves.min.js"></script>
+    <script>
+    VANTA.WAVES({
+      el: "#wave-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x1a4698,
+      shininess: 14.00,
+      waveHeight: 17.50
+    })
+    </script>
+
 </body>
 </html>

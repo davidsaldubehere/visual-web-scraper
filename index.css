@@ -2,8 +2,14 @@ body{
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(81, 156, 255);
-
+}
+#wave-bg{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
 }
 input{
     border-radius: 5px;
@@ -29,7 +35,6 @@ button{
 }
 button:hover{
     border: 2px solid rgb(212, 212, 212);
-
     background: #fff;
     color: #0e83cd;
     
@@ -50,28 +55,24 @@ button:hover{
     border-radius: 10px;
     text-align: center;
     margin: 10px;
-    
+
 }
 .editor{
     position: relative;
     width: 50%;
     background-color: white;
-
     border: 2px solid rgb(209, 209, 209);
     border-radius: 10px;
     text-align: center;
     padding: 50px;
     margin: 10px;
-
 }
 .field{
     display: none;
 }
 .generator{
-
     display: flex;
     padding: 10px;
-
 }
 .update{
     margin: 20px;
@@ -85,5 +86,4 @@ button:hover{
 }
 pre{
     text-align: initial;
-
 }
